@@ -81,13 +81,24 @@ public class CustomList<T> extends AbstractList<T> {
     }
 
     @Override
+    public boolean add(T t) {
+        addLast(t);
+        return true;
+    }
+
+    @Override
     public T get(int index) {
-        return null;
+        if (index >= size || index < 0) throw new IndexOutOfBoundsException();
+        Node<T> current = head;
+        for (int i = 0; i < index; ++i) {
+            current = current.next;
+        }
+        return current.value;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
 }
