@@ -134,4 +134,11 @@ public class CustomList<T> extends AbstractList<T> {
         return builder.build();
     }
 
+    public static <T> CustomList<T> filterByClass(CustomList<T> list, Class<?> clazz) {
+        CustomList<T> filtered = new CustomList<>();
+        list.stream()
+                .filter(object -> object != null && object.getClass().equals(clazz))
+                .forEach(filtered::add);
+        return filtered;
+    }
 }
